@@ -1,0 +1,37 @@
+{
+  "name": "ts-node-queue-spammer",
+  "version": "1.0.0",
+  "description": "Utility Node.js CLI to spam data inside queues, useful for testing",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CapitanFindusFI/ts-node-queue-spammer.git"
+  },
+  "keywords": [
+    "node",
+    "typescript",
+    "queue",
+    "CLI"
+  ],
+  "author": {
+    "email": "am95.dev@gmail.com",
+    "name": "Andrea Martini",
+    "url": "https://capitanfind.us"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CapitanFindusFI/ts-node-queue-spammer/issues"
+  },
+  "homepage": "https://github.com/CapitanFindusFI/ts-node-queue-spammer#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^13.9.3",
+    "typescript": "^3.8.3",
+    "ts-jest": "^25.2.1",
+    "jest": "^25.1.0",
+    "tslint": "^6.1.0"
+  }
+}
