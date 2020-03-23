@@ -31,18 +31,16 @@ export default class QueueSpammer {
             throw new Error('Invalid input provided');
         }
 
-        spinner.succeed('Validation passed')
+        spinner.succeed('validation passed')
     }
 
     process(): void {
         this.validate();
 
         const spinner = ora({
-            color: "red"
+            color: "blue"
         });
 
         spinner.start("processing request");
-
-        console.log(this.CLIArguments)
     }
 }
