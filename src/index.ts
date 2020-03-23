@@ -2,6 +2,8 @@ import yargs = require('yargs');
 import {ICommonArguments} from "./interfaces/arguments.interface";
 import GenericSpammer from "./impl/GenericSpammer";
 
+const ora = require('ora');
+
 const argv: ICommonArguments = yargs.options({
     file: {
         type: "string",
@@ -18,5 +20,14 @@ const argv: ICommonArguments = yargs.options({
     }
 }).argv;
 
+const spinner = ora({
+    color: "cyan"
+});
+
 const queueSpammer = new GenericSpammer(argv);
-queueSpammer.run();
+try {
+    spinner.start("Processing your request, QueueSpammer working...");
+    queueSpammer.run();
+} catch (e) {
+    spinner.fail(e.toString());
+}

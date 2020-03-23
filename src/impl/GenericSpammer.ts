@@ -8,49 +8,22 @@ export default class GenericSpammer extends QueueSpammer {
     }
 
     validate(): void {
-        const spinner = super.getSpinner({
-            color: "yellow"
-        });
-
-        spinner.start('validating input');
-
-        const errorMessages: string[] = [];
-
         const {file} = this.CLIArguments;
         if (file) {
-            const fileExists: boolean = super.fileExists(file);
-            if (!fileExists) errorMessages.push(`invalid file path specified: ${file}`);
-        }
+            const fileExists: boolean = super.fileExists();
+            if (!fileExists) {
+                throw new Error(`File: ${file} does not exists`)
+            }
 
-        if (errorMessages.length) {
-            spinner.fail(errorMessages.join('\n'));
-            throw new Error('Invalid input provided');
+            const isValidJSON = super.isValidJSON();
+            if (!isValidJSON) {
+                throw new Error('Invalid JSON file')
+            }
         }
-
-        spinner.succeed('validation passed')
     }
 
     process(): void {
-        const spinner = super.getSpinner({
-            color: "blue"
-        });
+        const JSONPayload = super.fileAsJSON();
 
-        spinner.start('processing request');
-
-        const errorMessages: string[] = [];
-
-        const {file} = this.CLIArguments;
-        if (file) {
-            const isValidJSON = super.isValidJSON(file);
-            if (!isValidJSON) errorMessages.push('invalid JSON file');
-        }
-
-        if (errorMessages.length) {
-            const errorMessage = errorMessages.join('\n');
-            spinner.fail(errorMessage);
-            throw new Error(errorMessage)
-        }
-
-        spinner.succeed('process completed');
     }
 }
