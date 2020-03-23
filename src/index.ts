@@ -6,8 +6,10 @@ const argv: ICLIArguments = yargs.options({
     file: {
         type: "string",
         demandOption: true,
-        alias: "f"
+        alias: "f",
+        defaultDescription: "pass a JSON file to send inside queues"
     }
 }).argv;
 
 const queueSpammer = new QueueSpammer(argv);
+queueSpammer.process();

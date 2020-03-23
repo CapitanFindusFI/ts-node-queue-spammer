@@ -4,7 +4,8 @@
   "description": "Utility Node.js CLI to spam data inside queues, useful for testing",
   "main": "./lib/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "start": "node ./lib/index.js"
   },
   "repository": {
     "type": "git",
