@@ -1,6 +1,9 @@
 # IDE
 .idea
 
+# Test Files
+test-files/
+
 # Logs
 logs
 *.log
