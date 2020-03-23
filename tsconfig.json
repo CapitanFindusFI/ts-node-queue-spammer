@@ -14,7 +14,8 @@
       "inquirer",
       "figlet"
     ],
-    "strict": true
+    "strict": true,
+    "downlevelIteration": true
   },
   "exclude": [
     "node_modules",

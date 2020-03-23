@@ -24,6 +24,8 @@ export default class GenericSpammer extends QueueSpammer {
 
     process(): void {
         const JSONPayload = super.fileAsJSON();
-
+        [...new Array(this.CLIArguments.howmany).keys()].forEach(() => {
+            console.log(JSONPayload);
+        });
     }
 }
