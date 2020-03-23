@@ -1,5 +1,6 @@
 import yargs = require('yargs');
 import {ICLIArguments} from "./interfaces/icliarguments.interface";
+import QueueSpammer from "./classes/QueueSpammer";
 
 const argv: ICLIArguments = yargs.options({
     file: {
@@ -9,4 +10,4 @@ const argv: ICLIArguments = yargs.options({
     }
 }).argv;
 
-
+const queueSpammer = new QueueSpammer(argv);

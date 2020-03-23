@@ -1,11 +1,16 @@
-import * as yargs from "yargs";
-import {Options} from "yargs";
+import {ICLIArguments} from "../interfaces/icliarguments.interface";
 
 export default class QueueSpammer {
 
-    private readonly CLIOptions: Options;
+    private readonly CLIArguments: ICLIArguments;
 
-    constructor(args: any) {
+    constructor(CLIArguments: ICLIArguments) {
+        this.CLIArguments = CLIArguments;
 
+        this.process();
+    }
+
+    process(): void {
+        console.log(this.CLIArguments)
     }
 }
