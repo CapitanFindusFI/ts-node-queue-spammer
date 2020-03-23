@@ -26,8 +26,11 @@ const spinner = ora({
 
 const queueSpammer = new GenericSpammer(argv);
 try {
-    spinner.start("Processing your request, QueueSpammer working...");
+    spinner.start("Processing your request, QueueSpammer working...\n");
     queueSpammer.run();
+
+    spinner.stop();
 } catch (e) {
     spinner.fail(e.toString());
+    process.exit(1);
 }
