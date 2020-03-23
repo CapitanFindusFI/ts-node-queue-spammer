@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "CommonJS",
+    "lib": [
+      "es6",
+      "dom",
+      "es2015"
+    ],
+    "outDir": "lib",
+    "rootDir": "src",
+    "types": [
+      "node",
+      "inquirer",
+      "figlet"
+    ],
+    "strict": true
+  },
+  "exclude": [
+    "node_modules",
+    "lib"
+  ]
+}

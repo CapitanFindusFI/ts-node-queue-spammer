@@ -2,7 +2,7 @@
   "name": "ts-node-queue-spammer",
   "version": "1.0.0",
   "description": "Utility Node.js CLI to spam data inside queues, useful for testing",
-  "main": "src/index.ts",
+  "main": "./lib/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -27,10 +27,14 @@
   },
   "homepage": "https://github.com/CapitanFindusFI/ts-node-queue-spammer#readme",
   "dependencies": {
+    "yargs": "^15.3.1",
     "inquirer": "^7.1.0",
-    "figlet": "^1.3.0"
+    "figlet": "^1.3.0",
+    "ora": "^4.0.3"
   },
   "devDependencies": {
+    "@types/ora": "^3.2.0",
+    "@types/yargs": "^15.0.4",
     "@types/node": "^13.9.3",
     "@types/inquirer": "^6.5.0",
     "@types/figlet": "^1.2.0",
