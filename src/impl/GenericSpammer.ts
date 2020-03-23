@@ -10,21 +10,27 @@ export default class GenericSpammer extends QueueSpammer {
     validate(): void {
         const {file} = this.CLIArguments;
         if (file) {
-            const fileExists: boolean = super.fileExists();
+            const fileExists: boolean = QueueSpammer.fileExists(file);
             if (!fileExists) {
                 throw new Error(`File: ${file} does not exists`)
             }
 
-            const isValidJSON = super.isValidJSON();
-            if (!isValidJSON) {
-                throw new Error('Invalid JSON file')
-            }
+            this.CLIArguments.json = QueueSpammer.fileToString(file);
+            delete this.CLIArguments.file
+        }
+
+        const isValidJSON: boolean = QueueSpammer.isValidJSON(this.CLIArguments.json);
+        if (!isValidJSON) {
+            throw new Error('Invalid JSON provided')
         }
     }
 
     process(): void {
-        const JSONPayload = super.fileAsJSON();
-        [...new Array(this.CLIArguments.howmany).keys()].forEach(() => {
+        const {howmany, json} = this.CLIArguments;
+
+        let JSONPayload: Object = JSON.parse(json);
+
+        [...new Array(howmany).keys()].forEach(() => {
             console.log(JSONPayload);
         });
     }
