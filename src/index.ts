@@ -1,9 +1,15 @@
-import {ICommonArguments} from "./interfaces/arguments.interface";
-import GenericSpammer from "./impl/GenericSpammer";
+import {ICommonArguments} from "./spammer/interfaces/arguments.interface";
+import QueueSpammer from "./spammer/queue-spammer";
 import yargs = require('yargs');
 import ora = require('ora');
 
 const argv: ICommonArguments = yargs.options({
+    connector: {
+        type: "string",
+        demandOption: true,
+        alias: 'c',
+        defaultDescription: 'Queue connector to be used'
+    },
     file: {
         type: "string",
         default: '',
@@ -28,7 +34,7 @@ const runProcess = (argv: ICommonArguments): void => {
     const spinner = ora({
         color: "cyan"
     });
-    const queueSpammer = new GenericSpammer(argv);
+    const queueSpammer = new QueueSpammer(argv);
     try {
         spinner.start("Processing your request, QueueSpammer working...\n");
         queueSpammer.run();
