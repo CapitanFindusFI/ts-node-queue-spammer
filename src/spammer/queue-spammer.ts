@@ -1,7 +1,7 @@
 import {ICommonArguments} from "./interfaces/arguments.interface";
-import * as fs from 'fs'
 import {IConnector} from "../connectors/interfaces/connector.interface";
 import ConnectorFactory from "../connectors/connector.factory";
+import * as fs from 'fs'
 
 export default class QueueSpammer {
 
