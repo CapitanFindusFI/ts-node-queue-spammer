@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Utility Node.js CLI to spam data inside queues, useful for testing",
   "main": "./lib/index.ts",
+  "types": "./lib/index.d.ts",
   "scripts": {
     "test": "jest --config jestconfig.json",
     "build": "tsc",

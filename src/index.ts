@@ -6,7 +6,7 @@ import ora = require('ora');
 const argv: ICommonArguments = yargs.options({
     connector: {
         type: "string",
-        demandOption: true,
+        default: '',
         alias: 'c',
         defaultDescription: 'Queue connector to be used'
     },
