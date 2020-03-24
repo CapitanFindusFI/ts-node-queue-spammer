@@ -4,7 +4,14 @@
   "description": "Utility Node.js CLI to spam data inside queues, useful for testing",
   "main": "./lib/index.ts",
   "scripts": {
+    "test": "jest --config jestconfig.json",
     "build": "tsc",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags",
     "start": "npm run build && node ./lib/index.js"
   },
   "repository": {

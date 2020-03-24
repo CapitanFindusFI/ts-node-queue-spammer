@@ -10,6 +10,7 @@ export class SQSConnector extends QueueConnector<ISQSCredentials> {
     }
 
     run(payload: string): void {
+        // TODO must be implemented
     }
 
 }

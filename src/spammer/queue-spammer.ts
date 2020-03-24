@@ -26,7 +26,7 @@ export default class QueueSpammer {
         return fs.existsSync(filePath);
     }
 
-    static fileAsJSON(filePath: string): Object {
+    static fileAsJSON(filePath: string): object {
         const fileContent = QueueSpammer.fileToString(filePath);
         return JSON.parse(fileContent);
     }

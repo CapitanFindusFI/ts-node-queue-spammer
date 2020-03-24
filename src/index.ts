@@ -30,11 +30,11 @@ const argv: ICommonArguments = yargs.options({
     }
 }).argv;
 
-const runProcess = (argv: ICommonArguments): void => {
+const runProcess = (CLIArguments: ICommonArguments): void => {
     const spinner = ora({
         color: "cyan"
     });
-    const queueSpammer = new QueueSpammer(argv);
+    const queueSpammer = new QueueSpammer(CLIArguments);
     try {
         spinner.start("Processing your request, QueueSpammer working...\n");
         queueSpammer.run();
