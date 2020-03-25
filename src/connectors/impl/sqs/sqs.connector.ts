@@ -32,15 +32,15 @@ export class SQSConnector extends QueueConnector<ISQSCredentials> {
 
     private createMessageBatch(payload: string, batchSize: number): AWS.SQS.SendMessageBatchRequest {
         return {
-            Entries: [...new Array(batchSize).keys()].map(() => this.collectBatchMessagePayload(payload)),
-            QueueUrl: this.credentials.queueUrl
+            Entries: [...Array(batchSize).keys()].map(() => this.collectBatchMessagePayload(payload)),
+            QueueUrl: 'https://example.me'
         }
     }
 
     private collectBatchMessages(payload: string, howmany: number): AWS.SQS.SendMessageBatchRequest[] {
         const MAX_MESSAGES_PAR_BATCH = 10;
-        const chunkSize = Math.max(MAX_MESSAGES_PAR_BATCH, howmany);
-        const payloadList: string[] = [...new Array(howmany).keys()].map(() => payload);
+        const chunkSize = Math.min(MAX_MESSAGES_PAR_BATCH, howmany);
+        const payloadList: string[] = [...Array(howmany).keys()].map(() => payload);
 
         return new Array(Math.ceil(payloadList.length / chunkSize))
             .fill(payload)

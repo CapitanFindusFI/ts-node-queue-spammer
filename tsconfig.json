@@ -12,14 +12,14 @@
     "types": [
       "node",
       "inquirer",
-      "figlet"
+      "figlet",
+      "jest"
     ],
     "strict": true,
     "downlevelIteration": true
   },
   "exclude": [
     "node_modules",
-    "lib",
-    "tests"
+    "lib"
   ]
 }
