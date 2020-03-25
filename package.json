@@ -14,7 +14,7 @@
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags",
     "start": "npm run build && node ./lib/index.js",
-    "fast": "npm run build && node ./lib/index.js -c sqs"
+    "fast": "npm run build && node ./lib/index.js --connector sqs"
   },
   "repository": {
     "type": "git",

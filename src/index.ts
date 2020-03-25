@@ -6,30 +6,27 @@ import yargs = require('yargs');
 import ora = require('ora');
 import inquirer = require('inquirer');
 
-const argv: ICommonArguments = yargs.options({
+const argv: any = yargs.options({
     connector: {
         type: "string",
-        default: '',
         alias: "c",
-        defaultDescription: 'Queue connector to be used'
+        description: 'Queue connector to be used'
     },
     file: {
         type: "string",
-        default: '',
         alias: "f",
-        defaultDescription: "pass a JSON file to send inside queues"
+        description: "Path of JSON file to be sent"
     },
     json: {
         type: "string",
-        default: '',
         alias: "j",
-        defaultDescription: "directly input JSON"
+        description: "JSON string as input"
     },
     howmany: {
         type: "number",
-        alias: 'm',
-        defaultDescription: 'how many items to spam, defaults to 1',
-        default: 1
+        default: 1,
+        alias: "n",
+        description: "How many messages to send"
     }
 }).argv;
 
@@ -47,7 +44,7 @@ const parseOptions = (CLIArguments: ICommonArguments): Promise<ICommonArguments>
     }
 
     return prompt(promptQuestions).then((answers: Answers) => {
-        CLIArguments.connector = answers.connector;
+        if (answers.connector) CLIArguments.connector = answers.connector;
         return CLIArguments
     })
 };
