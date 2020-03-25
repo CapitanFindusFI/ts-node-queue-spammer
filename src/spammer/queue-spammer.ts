@@ -11,6 +11,7 @@ export default class QueueSpammer {
 
     constructor(CLIArguments: ICommonArguments) {
         this.CLIArguments = CLIArguments;
+        console.log('Passed arguments', this.CLIArguments);
     }
 
     public run(): void {

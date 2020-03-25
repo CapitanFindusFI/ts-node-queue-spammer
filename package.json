@@ -13,7 +13,8 @@
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags",
-    "start": "npm run build && node ./lib/index.js"
+    "start": "npm run build && node ./lib/index.js",
+    "fast": "npm run build && node ./lib/index.js -c sqs"
   },
   "repository": {
     "type": "git",

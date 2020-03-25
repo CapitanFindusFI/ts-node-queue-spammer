@@ -1,13 +1,16 @@
 import {ICommonArguments} from "./spammer/interfaces/arguments.interface";
 import QueueSpammer from "./spammer/queue-spammer";
+import ConnectorFactory from "./connectors/connector.factory";
+import {Answers} from "inquirer";
 import yargs = require('yargs');
 import ora = require('ora');
+import inquirer = require('inquirer');
 
 const argv: ICommonArguments = yargs.options({
     connector: {
         type: "string",
         default: '',
-        alias: 'c',
+        alias: "c",
         defaultDescription: 'Queue connector to be used'
     },
     file: {
@@ -30,7 +33,27 @@ const argv: ICommonArguments = yargs.options({
     }
 }).argv;
 
-const runProcess = (CLIArguments: ICommonArguments): void => {
+const parseOptions = (CLIArguments: ICommonArguments): Promise<ICommonArguments> => {
+    const prompt = inquirer.createPromptModule();
+    const promptQuestions = [];
+
+    if (!CLIArguments.connector) {
+        promptQuestions.push({
+            type: 'list',
+            name: 'connector',
+            choices: ConnectorFactory.ALLOWED_CONNECTORS,
+            message: 'Select which queue connector to use'
+        })
+    }
+
+    return prompt(promptQuestions).then((answers: Answers) => {
+        CLIArguments.connector = answers.connector;
+        return CLIArguments
+    })
+};
+
+const runProcess = async (CLIArguments: ICommonArguments): Promise<void> => {
+    CLIArguments = await parseOptions(CLIArguments);
     const spinner = ora({
         color: "cyan"
     });
