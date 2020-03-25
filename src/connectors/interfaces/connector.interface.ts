@@ -1,5 +1,5 @@
 export interface IConnector<T> {
     credentials: T;
 
-    run(payload: string): void;
+    run(payload: string, howmany: number): void;
 }

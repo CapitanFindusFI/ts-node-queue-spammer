@@ -7,5 +7,5 @@ export abstract class QueueConnector<T> implements IConnector<T> {
     protected constructor() {
     }
 
-    abstract run(payload: string): void;
+    abstract run(payload: string, howmany: number): void;
 }

@@ -4,5 +4,5 @@ export interface ICommonArguments {
     connector: string;
     file: string;
     json: string;
-    howmany?: number;
+    howmany: number;
 }

@@ -11,7 +11,6 @@ export default class QueueSpammer {
 
     constructor(CLIArguments: ICommonArguments) {
         this.CLIArguments = CLIArguments;
-        console.log('Passed arguments', this.CLIArguments);
     }
 
     public run(): void {
@@ -60,6 +59,9 @@ export default class QueueSpammer {
 
     private process(): void {
         this.connector = ConnectorFactory.getConnector(this.CLIArguments.connector);
-        this.connector.run(this.CLIArguments.json)
+        this.connector.run(
+            this.CLIArguments.json,
+            this.CLIArguments.howmany
+        )
     }
 }
