@@ -6,6 +6,8 @@ import yargs = require('yargs');
 import ora = require('ora');
 import inquirer = require('inquirer');
 
+require('dotenv').config();
+
 const argv: any = yargs.options({
     connector: {
         type: "string",
