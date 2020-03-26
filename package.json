@@ -17,6 +17,9 @@
     "start": "npm run build && node ./lib/index.js",
     "fast": "npm run build && node ./lib/index.js --connector sqs"
   },
+  "bin": {
+    "queue-spammer": "./lib/index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CapitanFindusFI/ts-node-queue-spammer.git"

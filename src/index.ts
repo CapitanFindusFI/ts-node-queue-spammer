@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import {ICommonArguments} from "./spammer/interfaces/arguments.interface";
 import QueueSpammer from "./spammer/queue-spammer";
 import ConnectorFactory from "./connectors/connector.factory";
