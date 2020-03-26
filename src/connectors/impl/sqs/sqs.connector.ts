@@ -33,7 +33,7 @@ export class SQSConnector extends QueueConnector<ISQSCredentials> {
     private createMessageBatch(payload: string, batchSize: number): AWS.SQS.SendMessageBatchRequest {
         return {
             Entries: [...Array(batchSize).keys()].map(() => this.collectBatchMessagePayload(payload)),
-            QueueUrl: 'https://example.me'
+            QueueUrl: this.credentials.queueUrl
         }
     }
 
@@ -49,12 +49,12 @@ export class SQSConnector extends QueueConnector<ISQSCredentials> {
     }
 
     run(payload: string, howmany: number): void {
-        // TODO must be implemented
-
         const batchMessages = this.collectBatchMessages(payload, howmany);
-
-        console.log(JSON.stringify(batchMessages));
-        console.log('\n')
+        batchMessages.forEach((batchRequest: AWS.SQS.SendMessageBatchRequest) => {
+           this.sqsClient.sendMessageBatch(batchRequest, (err, data) => {
+               if(err) throw err
+           });
+        });
     }
 
 }

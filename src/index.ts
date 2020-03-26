@@ -58,10 +58,10 @@ const runProcess = async (CLIArguments: ICommonArguments): Promise<void> => {
     });
     const queueSpammer = new QueueSpammer(CLIArguments);
     try {
-        spinner.start("Processing your request, QueueSpammer working...\n");
+        spinner.start("Processing your request...\n");
         queueSpammer.run();
 
-        spinner.stop();
+        spinner.succeed("Your messages have been sent\n");
     } catch (e) {
         spinner.fail(e.toString());
         process.exit(1);
