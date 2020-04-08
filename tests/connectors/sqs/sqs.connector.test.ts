@@ -1,4 +1,4 @@
-import SQSConnector from './__mocks__/sqs.connector';
+import SQSConnector from "./__mocks__/sqs.connector";
 
 const jest = require('jest');
 

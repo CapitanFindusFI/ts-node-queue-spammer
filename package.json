@@ -14,8 +14,7 @@
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags",
-    "start": "npm run build && node ./lib/index.js",
-    "fast": "npm run build && node ./lib/index.js --connector sqs"
+    "start": "npm run build && node ./lib/index.js"
   },
   "bin": {
     "queue-spammer": "./lib/index.js"

@@ -23,7 +23,7 @@ export class SQSConnector extends QueueConnector<ISQSCredentials> {
         })
     }
 
-    private collectBatchMessagePayload(payload: string): AWS.SQS.SendMessageBatchRequestEntry {
+    private static collectBatchMessagePayload(payload: string): AWS.SQS.SendMessageBatchRequestEntry {
         return {
             Id: uuidv4(),
             MessageBody: payload
@@ -32,7 +32,7 @@ export class SQSConnector extends QueueConnector<ISQSCredentials> {
 
     private createMessageBatch(payload: string, batchSize: number): AWS.SQS.SendMessageBatchRequest {
         return {
-            Entries: [...Array(batchSize).keys()].map(() => this.collectBatchMessagePayload(payload)),
+            Entries: [...Array(batchSize).keys()].map(() => SQSConnector.collectBatchMessagePayload(payload)),
             QueueUrl: this.credentials.queueUrl
         }
     }

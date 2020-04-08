@@ -11,11 +11,6 @@ import inquirer = require('inquirer');
 require('dotenv').config();
 
 const argv: any = yargs.options({
-    connector: {
-        type: "string",
-        alias: "c",
-        description: 'Queue connector to be used'
-    },
     file: {
         type: "string",
         alias: "f",
